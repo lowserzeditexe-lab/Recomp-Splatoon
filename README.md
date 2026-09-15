@@ -46,7 +46,8 @@ Tous les fichiers sont dans `docs/` :
 | Fichier                 | Contenu                                                       |
 | ----------------------- | ------------------------------------------------------------- |
 | `AUDIT.md`              | Audit détaillé du dépôt réel (build vérifiés, inventaire)     |
-| `ARCHITECTURE.md`       | Architecture du pipeline et du runtime réels                  |
+| `ARCHITECTURE.md`       | Architecture **réellement implémentée aujourd'hui**           |
+| `TARGET_ARCHITECTURE.md`| Architecture **cible finale** (contrat, pas implémentation)   |
 | `COMPATIBILITY.md`      | Versions du jeu et plateformes hôtes                          |
 | `WINDOWS_BUILD.md`      | Instructions build Windows (non exécutées ici)                |
 | `MISSING_FEATURES.md`   | Éléments absents ou incomplets, priorisés P0..P3              |

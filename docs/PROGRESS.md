@@ -15,7 +15,13 @@ Statut au 2026-01, basé sur l'audit réel du dépôt RebrewU @ `0b40c4f`.
 - [ ] **M8 — Playable offline** — nécessite M5..M7 + audio complet
 - [ ] **M9 — Stability** — nécessite multi-thread réel + save data
 - [ ] **M10 — Network research** — étude Pretendo/NEX/PRUDP (docs à produire)
-- [ ] **M11 — Pretendo** — sous réserve de compatibilité client PC natif
+- [ ] **M11 — Pretendo Account** (PNID, NEX identity, launcher status)
+- [ ] **M12 — Pretendo Online** (game server discovery, Splatoon services)
+- [ ] **M13 — Wii U ↔ PC Save Transfer** (SaveMii import/export, SD, LAN)
+- [ ] **M14 — Modding** (VFS, manifest, load order, shader overrides)
+- [ ] **M15 — Environment Separation** (Vanilla / Private Modded / Dev)
+- [ ] **M16 — Private Modded Sessions** (LAN, custom maps, session manifest)
+- [ ] **M17 — Native Windows Launcher** (UI complète)
 
 ## Trackers détaillés
 

@@ -13,12 +13,13 @@ Légende : `P0` bloquant premier frame • `P1` bloquant menu/gameplay •
 
 ### R700 → GLSL shader translation
 
-- **Fichier** : `port/os/gx2/r700_to_glsl.cpp` (405 lignes actuellement).
+- **Fichier** : `port/os/gx2/r700_to_glsl.cpp` (405 lignes + 34 lignes d'instrumentation M5 opt-in).
 - **Statut** : partiel — README section "Project Status" ligne "🔄 In progress".
+- **Audit détaillé** : voir `docs/R700_GLSL_AUDIT.md` (couverture exacte : ~20 opcodes OP2 / ~150+, 4 OP3 / ~30, 1 TEX / ~10, aucun control flow, aucun integer op).
 - **Symptôme observé** : "black window / nothing renders" (README §Troubleshooting).
-- **Action** : compléter l'émulation des instructions ALU/FETCH/CF R700 encore
-  manquantes, faire le mapping des samplers/constants et générer des shaders
-  GLSL 4.1 core valides. `REQUIRES WINDOWS/GPU VALIDATION`.
+- **Instrumentation ajoutée pour M5** : `RECOMP_SHADER_DUMP=<dir>` capture chaque VS/PS ; `RECOMP_SHADER_NO_STUB=1` désactive le fallback magenta pour ne plus masquer les échecs. Ces deux variables sont opt-in : aucun effet quand non définies (build & boot vérifiés inchangés).
+- **Tests unitaires** : `tests/test_r700_to_glsl.cpp` — 21 asserts GPU-indépendants, OK.
+- **Action** : sur box GPU + dump utilisateur, exécuter avec `RECOMP_SHADER_DUMP` pour mesurer la couverture réelle, puis implémenter uniquement les opcodes rencontrés (ne pas coder les 200+ opcodes R700 publics à l'aveugle). Voir `docs/R700_GLSL_AUDIT.md §9`.
 - **Blocker level** : sans ceci, aucun pixel réel n'est rendu.
 
 ### Content directory manquant / dump utilisateur

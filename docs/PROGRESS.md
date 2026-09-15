@@ -10,6 +10,14 @@ Statut au 2026-01, basé sur l'audit réel du dépôt RebrewU @ `0b40c4f`.
 - [x] **M3 — Static recompilation** (déjà présent : 214 `Gambit_part*.cpp`)
 - [x] **M4 — Runtime initialization** (boot mesuré : arène 768 MB, OS registered, heap seed, ctors run, entry dispatch)
 - [ ] **M5 — First native frame** — BLOCKED par shaders R700→GLSL partiels (P0)
+  - [x] Audit détaillé du translator (`docs/R700_GLSL_AUDIT.md`, 10 sections)
+  - [x] Tests unitaires GPU-independent (`tests/test_r700_to_glsl.cpp`, 21 asserts, OK)
+  - [x] Instrumentation opt-in : `RECOMP_SHADER_DUMP=<dir>` + `RECOMP_SHADER_NO_STUB=1` (safe, no effect if unset)
+  - [ ] Capture réelle des shaders Splatoon (nécessite dump utilisateur légal)
+  - [ ] Comptage opcodes rencontrés → priorité d'implémentation
+  - [ ] Compléter les opcodes ALU/TEX manquants pour couvrir le VS+PS du render context initial
+  - [ ] Validation GLSL sur GPU réel (`REQUIRES WINDOWS/GPU VALIDATION`)
+  - [ ] Preuve : framebuffer présenté avec pixels non-magenta-stub
 - [ ] **M6 — Splatoon main menu** — nécessite M5 + `content/` utilisateur
 - [ ] **M7 — Input** — code présent (vpad, padscore), non testable sans dump
 - [ ] **M8 — Playable offline** — nécessite M5..M7 + audio complet

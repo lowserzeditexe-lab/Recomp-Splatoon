@@ -85,3 +85,9 @@ android-sdk/
 **/.emergent/recordings/
 vendor/rebrewu/build_port/Gambit
 !/RecompSplatoon_TestKit.zip
+.env
+.env.*
+*.env
+credentials.json
+*.key
+.credentials

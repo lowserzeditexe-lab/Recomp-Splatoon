@@ -1,4 +1,5 @@
-from fastapi import FastAPI, APIRouter
+from fastapi import FastAPI, APIRouter, HTTPException
+from fastapi.responses import FileResponse
 from dotenv import load_dotenv
 from starlette.middleware.cors import CORSMiddleware
 from motor.motor_asyncio import AsyncIOMotorClient
@@ -41,6 +42,22 @@ class StatusCheckCreate(BaseModel):
 @api_router.get("/")
 async def root():
     return {"message": "Hello World"}
+
+
+# --- Recomp Splatoon test-kit download (toolchain only, NO Nintendo content) ---
+DOWNLOADS_DIR = ROOT_DIR.parent  # repo root, where RecompSplatoon_TestKit.zip lives
+TESTKIT_FILENAME = "RecompSplatoon_TestKit.zip"
+
+@api_router.get("/download/testkit")
+async def download_testkit():
+    file_path = DOWNLOADS_DIR / TESTKIT_FILENAME
+    if not file_path.exists():
+        raise HTTPException(status_code=404, detail="Test kit not found")
+    return FileResponse(
+        path=str(file_path),
+        media_type="application/zip",
+        filename=TESTKIT_FILENAME,
+    )
 
 @api_router.post("/status", response_model=StatusCheck)
 async def create_status_check(input: StatusCheckCreate):
